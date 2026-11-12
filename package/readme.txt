@@ -41,10 +41,6 @@ dinput8.dll is the Ultimate ASI Loader. The Widescreen Fix, the Controller
 Mod, the Japanese Voices and the French Translation use the same file, so
 replacing it is fine.
 
-Updating from 1.0: extract the two new archives the same way. The old
-SW2_HD_Textures folder (with INSTALL.bat) is no longer needed and can be
-deleted.
-
 
 UNINSTALL
 ---------
@@ -134,10 +130,6 @@ INSTALLATION
 dinput8.dll est le chargeur Ultimate ASI Loader. Le correctif écran large,
 le mod manette, la VO japonaise et la traduction française utilisent le
 même fichier : vous pouvez le remplacer sans souci.
-
-Mise à jour depuis la 1.0 : extrayez les deux nouvelles archives de la
-même façon. L'ancien dossier SW2_HD_Textures (avec INSTALL.bat) ne sert
-plus et peut être supprimé.
 
 
 DÉSINSTALLATION
