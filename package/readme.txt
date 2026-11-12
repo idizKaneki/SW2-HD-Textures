@@ -27,7 +27,8 @@ REQUIREMENTS
 INSTALL
 -------
 1. Close the game.
-2. Extract the archive into the game folder. You should get:
+2. Download BOTH files from Nexus (Plugin and Textures) and extract them
+   into the game folder (same SW2_HD_Textures folder). You should get:
       ...\Samurai Warriors 2\sw2.exe
       ...\Samurai Warriors 2\SW2_HD_Textures\INSTALL.bat
 3. Run SW2_HD_Textures\INSTALL.bat.
@@ -113,7 +114,9 @@ CONFIGURATION REQUISE
 INSTALLATION
 ------------
 1. Fermez le jeu.
-2. Extrayez l'archive dans le dossier du jeu. Vous devez obtenir :
+2. Téléchargez les DEUX fichiers sur Nexus (Plugin et Textures) et
+   extrayez-les dans le dossier du jeu (même dossier SW2_HD_Textures).
+   Vous devez obtenir :
       ...\Samurai Warriors 2\sw2.exe
       ...\Samurai Warriors 2\SW2_HD_Textures\INSTALL.bat
 3. Lancez SW2_HD_Textures\INSTALL.bat.

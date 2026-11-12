@@ -78,15 +78,17 @@ echo  Le dossier SW2_HD_Textures doit être dans le dossier du jeu, à côté de
 goto :fin
 
 :err_fichiers
-echo  [ERROR / ERREUR] Mod files are missing, extract the whole archive again.
-echo  Des fichiers du mod sont manquants, ré-extrayez l'archive complète.
+echo  [ERROR / ERREUR] Mod files are missing: extract the "Plugin" archive again.
+echo  Des fichiers du mod sont manquants : ré-extrayez l'archive "Plugin".
 goto :fin
 
 :err_textures
-echo  [ERROR / ERREUR] The textures folder is missing (SW2_HD_Textures\textures\Textures_HD).
-echo  Extract the whole archive again, then run INSTALL.bat.
-echo  Le dossier des textures manque (SW2_HD_Textures\textures\Textures_HD).
-echo  Ré-extrayez l'archive complète, puis relancez INSTALL.bat.
+echo  [ERROR / ERREUR] The HD textures are missing (SW2_HD_Textures\textures\Textures_HD).
+echo  Download BOTH files from Nexus (Plugin and Textures), extract them into the
+echo  game folder, then run INSTALL.bat again.
+echo  Les textures HD manquent (SW2_HD_Textures\textures\Textures_HD).
+echo  Téléchargez les DEUX fichiers sur Nexus (Plugin et Textures), extrayez-les
+echo  dans le dossier du jeu, puis relancez INSTALL.bat.
 goto :fin
 
 :err_incomplet
