@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-Fabrique les 2 archives Nexus "Samurai Warriors 2 - HD Textures" (1.0.1) :
-  - Plugin   : INSTALL.bat, UNINSTALL.bat, readme, SW2HD.asi/.ini, dinput8.dll (petit, change a chaque mise a jour)
-  - Textures : les images HD seulement (gros, aucun programme)
-Les deux s'extraient dans le meme dossier SW2_HD_Textures.
+Fabrique les 2 archives Nexus "Samurai Warriors 2 - HD Textures" (1.0.1).
+Pas d'installeur (.bat) : les deux s'extraient directement dans le dossier du jeu, a cote de sw2.exe.
+  - Plugin   : SW2HD.asi, SW2HD.ini, dinput8.dll, SW2HD_readme.txt (petit)
+  - Textures : Textures_HD\\ (images HD seulement, aucun programme)
 
 A placer dans un meme dossier (par ex. SW2_atelier\\remaster\\mod_hd) :
-  creer_mod_hd.py, INSTALL.bat, UNINSTALL.bat, readme.txt,
-  files\\SW2HD.asi, files\\SW2HD.ini
+  creer_mod_hd.py, readme.txt, files\\SW2HD.asi, files\\SW2HD.ini
 
 Prend les textures dans le dossier Textures_HD du jeu et le chargeur ASI (dinput8.dll)
 a cote de sw2.exe. Ne modifie rien dans le jeu.
@@ -24,7 +23,8 @@ import zipfile
 ICI = os.path.dirname(os.path.abspath(__file__))
 JEU = os.environ.get('SW2_JEU', r'C:\Games\KOEI\SAMURAI WARRIORS 2')
 NOM = 'SW2_HD_Textures'
-FICHIERS = ['INSTALL.bat', 'UNINSTALL.bat', 'readme.txt', 'files/SW2HD.asi', 'files/SW2HD.ini']
+FICHIERS = ['readme.txt', 'files/SW2HD.asi', 'files/SW2HD.ini']
+DANS_ZIP = {'readme.txt': 'SW2HD_readme.txt', 'files/SW2HD.asi': 'SW2HD.asi', 'files/SW2HD.ini': 'SW2HD.ini'}
 
 
 def lire_index(p):
@@ -69,24 +69,23 @@ def main():
     plugin = os.path.join(ICI, '%s_Plugin_v%s.zip' % (NOM, a.version))
     with zipfile.ZipFile(plugin + '.tmp', 'w', zipfile.ZIP_DEFLATED, compresslevel=6) as z:
         for f in FICHIERS:
-            z.write(os.path.join(ICI, f), '%s/%s' % (NOM, f))
-        z.write(dll, '%s/files/dinput8.dll' % NOM)
+            z.write(os.path.join(ICI, f), DANS_ZIP[f])
+        z.write(dll, 'dinput8.dll')
     finir(plugin + '.tmp', plugin)
 
     # 2) Textures : seulement des images, aucun programme
     textures = os.path.join(ICI, '%s_Textures_v%s.zip' % (NOM, a.version))
     with zipfile.ZipFile(textures + '.tmp', 'w', zipfile.ZIP_DEFLATED, compresslevel=6) as z:
-        z.writestr('%s/textures/count.txt' % NOM, str(len(attendus)))
-        z.write(idx, '%s/textures/Textures_HD/index.bin' % NOM)
+        z.write(idx, 'Textures_HD/index.bin')
         for i, f in enumerate(sorted(attendus)):
-            z.write(os.path.join(tex, f), '%s/textures/Textures_HD/%s' % (NOM, f))
+            z.write(os.path.join(tex, f), 'Textures_HD/%s' % f)
             if (i + 1) % 500 == 0: print('  %d / %d' % (i + 1, len(attendus)), flush=True)
     print('Verification de l archive des textures...', flush=True)
     with zipfile.ZipFile(textures + '.tmp') as z:
         n = sum(1 for x in z.namelist() if x.endswith('.sw2h'))
     if n != len(attendus): sys.exit('[ERREUR] archive des textures incomplete (%d / %d)' % (n, len(attendus)))
     finir(textures + '.tmp', textures)
-    print('Contenu : Plugin (module, installeur, readme, chargeur ASI) + Textures (%d images HD) ;'
+    print('Contenu : Plugin (module, reglages, readme, chargeur ASI) + Textures (%d images HD) ;'
           ' aucun fichier original du jeu.' % n)
 
 if __name__ == '__main__':

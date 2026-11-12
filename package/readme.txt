@@ -27,24 +27,30 @@ REQUIREMENTS
 INSTALL
 -------
 1. Close the game.
-2. Download BOTH files from Nexus (Plugin and Textures) and extract them
-   into the game folder (same SW2_HD_Textures folder). You should get:
+2. Download BOTH files from Nexus: "Plugin" and "Textures".
+3. Extract both archives directly into the game folder, next to sw2.exe.
+   If Windows asks, replace the existing files. You should get:
       ...\Samurai Warriors 2\sw2.exe
-      ...\Samurai Warriors 2\SW2_HD_Textures\INSTALL.bat
-3. Run SW2_HD_Textures\INSTALL.bat.
-If the game is in "Program Files": right-click INSTALL.bat,
-"Run as administrator".
+      ...\Samurai Warriors 2\dinput8.dll
+      ...\Samurai Warriors 2\SW2HD.asi
+      ...\Samurai Warriors 2\SW2HD.ini
+      ...\Samurai Warriors 2\Textures_HD\  (7,392 .sw2h files + index.bin)
+4. Launch the game. That's it: no installer to run.
 
-The installer puts SW2HD.asi, SW2HD.ini and the Textures_HD folder next to
-sw2.exe. It also installs dinput8.dll (Ultimate ASI Loader) only if it
-is not already there: the Widescreen Fix and the Controller Mod use the
-same loader.
+dinput8.dll is the Ultimate ASI Loader. The Widescreen Fix, the Controller
+Mod, the Japanese Voices and the French Translation use the same file, so
+replacing it is fine.
+
+Updating from 1.0: extract the two new archives the same way. The old
+SW2_HD_Textures folder (with INSTALL.bat) is no longer needed and can be
+deleted.
 
 
 UNINSTALL
 ---------
-Run SW2_HD_Textures\UNINSTALL.bat. The HD textures go back into the
-SW2_HD_Textures folder: delete that folder to free the disk space.
+Delete SW2HD.asi, SW2HD.ini, SW2HD.log and the Textures_HD folder from the
+game folder. Keep dinput8.dll if you use any of my other mods; otherwise
+delete it too.
 
 
 SETTINGS (SW2HD.ini, next to sw2.exe)
@@ -114,25 +120,31 @@ CONFIGURATION REQUISE
 INSTALLATION
 ------------
 1. Fermez le jeu.
-2. Téléchargez les DEUX fichiers sur Nexus (Plugin et Textures) et
-   extrayez-les dans le dossier du jeu (même dossier SW2_HD_Textures).
+2. Téléchargez les DEUX fichiers sur Nexus : « Plugin » et « Textures ».
+3. Extrayez les deux archives directement dans le dossier du jeu, à côté
+   de sw2.exe. Si Windows le demande, remplacez les fichiers existants.
    Vous devez obtenir :
       ...\Samurai Warriors 2\sw2.exe
-      ...\Samurai Warriors 2\SW2_HD_Textures\INSTALL.bat
-3. Lancez SW2_HD_Textures\INSTALL.bat.
-Si le jeu est dans « Program Files » : clic droit sur INSTALL.bat,
-« Exécuter en tant qu'administrateur ».
+      ...\Samurai Warriors 2\dinput8.dll
+      ...\Samurai Warriors 2\SW2HD.asi
+      ...\Samurai Warriors 2\SW2HD.ini
+      ...\Samurai Warriors 2\Textures_HD\  (7 392 fichiers .sw2h + index.bin)
+4. Lancez le jeu. C'est tout : aucun installeur à lancer.
 
-L'installeur place SW2HD.asi, SW2HD.ini et le dossier Textures_HD à côté de
-sw2.exe. Il installe aussi dinput8.dll (Ultimate ASI Loader) seulement
-s'il n'y est pas déjà : le Widescreen Fix et le mod manette utilisent le
-même chargeur.
+dinput8.dll est le chargeur Ultimate ASI Loader. Le correctif écran large,
+le mod manette, la VO japonaise et la traduction française utilisent le
+même fichier : vous pouvez le remplacer sans souci.
+
+Mise à jour depuis la 1.0 : extrayez les deux nouvelles archives de la
+même façon. L'ancien dossier SW2_HD_Textures (avec INSTALL.bat) ne sert
+plus et peut être supprimé.
 
 
 DÉSINSTALLATION
 ---------------
-Lancez SW2_HD_Textures\UNINSTALL.bat. Les textures HD retournent dans le
-dossier SW2_HD_Textures : supprimez ce dossier pour libérer la place.
+Supprimez SW2HD.asi, SW2HD.ini, SW2HD.log et le dossier Textures_HD du
+dossier du jeu. Gardez dinput8.dll si vous utilisez un de mes autres mods,
+sinon supprimez-le aussi.
 
 
 RÉGLAGES (SW2HD.ini, à côté de sw2.exe)
