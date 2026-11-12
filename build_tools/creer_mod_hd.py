@@ -3,7 +3,7 @@
 Fabrique les 2 archives Nexus "Samurai Warriors 2 - HD Textures" (1.0.1).
 Pas d'installeur (.bat) : les deux s'extraient directement dans le dossier du jeu, a cote de sw2.exe.
   - Plugin   : SW2HD.asi, SW2HD.ini, dinput8.dll, SW2HD_readme.txt (petit)
-  - Textures : Textures_HD\\ (images HD seulement, aucun programme)
+  - TexturePack : Textures_HD\\ (images HD seulement, aucun programme)
 
 A placer dans un meme dossier (par ex. SW2_atelier\\remaster\\mod_hd) :
   creer_mod_hd.py, readme.txt, files\\SW2HD.asi, files\\SW2HD.ini
@@ -74,7 +74,7 @@ def main():
     finir(plugin + '.tmp', plugin)
 
     # 2) Textures : seulement des images, aucun programme
-    textures = os.path.join(ICI, '%s_Textures_v%s.zip' % (NOM, a.version))
+    textures = os.path.join(ICI, '%s_TexturePack_v%s.zip' % (NOM, a.version))
     with zipfile.ZipFile(textures + '.tmp', 'w', zipfile.ZIP_DEFLATED, compresslevel=6) as z:
         z.write(idx, 'Textures_HD/index.bin')
         for i, f in enumerate(sorted(attendus)):

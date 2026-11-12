@@ -27,7 +27,7 @@ REQUIREMENTS
 INSTALL
 -------
 1. Close the game.
-2. Download BOTH files from Nexus: "Plugin" and "Textures".
+2. Download BOTH files from Nexus: "Plugin" and "Texture Pack".
 3. Extract both archives directly into the game folder, next to sw2.exe.
    If Windows asks, replace the existing files. You should get:
       ...\Samurai Warriors 2\sw2.exe
@@ -120,7 +120,7 @@ CONFIGURATION REQUISE
 INSTALLATION
 ------------
 1. Fermez le jeu.
-2. Téléchargez les DEUX fichiers sur Nexus : « Plugin » et « Textures ».
+2. Téléchargez les DEUX fichiers sur Nexus : « Plugin » et « Texture Pack ».
 3. Extrayez les deux archives directement dans le dossier du jeu, à côté
    de sw2.exe. Si Windows le demande, remplacez les fichiers existants.
    Vous devez obtenir :

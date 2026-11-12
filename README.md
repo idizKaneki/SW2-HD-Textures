@@ -21,7 +21,7 @@ Since 1.0.1 the release is split in two zips, both extracted directly into the g
 | `SW2HD_readme.txt` | `package/readme.txt` (plain text) |
 | `dinput8.dll` | unmodified Ultimate ASI Loader by ThirteenAG (MIT): https://github.com/ThirteenAG/Ultimate-ASI-Loader/releases (Win32 build) |
 
-**SW2_HD_Textures_Textures_v1.0.1.zip** (large, data only, no program)
+**SW2_HD_Textures_TexturePack_v1.0.1.zip** (large, data only, no program)
 
 | File in the zip | Source |
 |---|---|
@@ -32,7 +32,7 @@ The release contains **no executable code other than `SW2HD.asi` and the unmodif
 ## Changelog
 
 - **1.0.1**: the hook trampoline is never writable and executable at the same time (fewer antivirus
-  false positives: 0/70 on VirusTotal); release split into Plugin + Textures files,
+  false positives: 0/70 on VirusTotal); release split into Plugin + Texture Pack files,
   extracted directly into the game folder (no .bat installer).
 - **1.0**: first release.
 
