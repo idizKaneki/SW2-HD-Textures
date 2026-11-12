@@ -1,4 +1,4 @@
-/* SW2HD.asi 2.0.3 - Samurai Warriors 2 (PC) : textures HD remplacees a la volee (decors, personnages, menus...).
+/* SW2HD.asi 1.0.1 - Samurai Warriors 2 (PC) : textures HD remplacees a la volee (decors, personnages, menus...).
  * Le jeu charge ses images d'origine et calcule ses decoupages normalement ; au moment de
  * l'affichage, ce module donne a Direct3D la version HD (meme image, 2 fois plus fine).
  * Les images HD sont dans le dossier Textures_HD\ du jeu (ancien nom : SW2HD\) : <crc32>.sw2h (crc32 = empreinte des pixels
@@ -9,6 +9,7 @@
  *   Log=1             journal SW2HD.log
  *   VideoMemory=1     images HD en memoire video (ne pese pas sur la memoire du jeu)
  *   Mipmaps=1         filtrage des versions reduites (moins de scintillement de loin)
+ * 1.0.1 : trampoline jamais en memoire inscriptible+executable (moins de fausses alertes antivirus).
  * 2.0.3 : F11 coupe / remet les textures HD en jeu (comparaison).
  * 2.0.2 : dossier des images renomme Textures_HD (SW2HD toujours lu).
  * 2.0.1 : accroche fiable meme quand le jeu cree Direct3D tres tot (lancement direct).
@@ -309,7 +310,7 @@ static int accrocher_c9(HMODULE m) {
     u8 *p, *t; DWORD old; int i;
     if (!m || InterlockedCompareExchange(&g_c9, 1, 0) != 0) return 0;   /* deja fait (ou tente) */
     p = (u8*)GetProcAddress(m, "Direct3DCreate9");
-    t = p ? (u8*)VirtualAlloc(0, 16, MEM_COMMIT | MEM_RESERVE, PAGE_EXECUTE_READWRITE) : 0;
+    t = p ? (u8*)VirtualAlloc(0, 16, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE) : 0;
     if (!t) { g_c9 = 3; return 0; }
     if (p[0] == 0xE9) {                                            /* deja detourne (overlay...) : on suit */
         u32 dst = (u32)p + 5 + *(int*)(p + 1);
@@ -318,6 +319,8 @@ static int accrocher_c9(HMODULE m) {
         for (i = 0; i < 5; i++) t[i] = p[i];                       /* mov edi,edi ; push ebp ; mov ebp,esp */
         t[5] = 0xE9; *(int*)(t + 6) = (int)(((u32)p + 5) - ((u32)t + 10));
     } else { VirtualFree(t, 0, MEM_RELEASE); g_c9 = 3; return 0; }
+    VirtualProtect(t, 16, PAGE_EXECUTE_READ, &old);               /* 1.0.1 : jamais de memoire inscriptible ET executable */
+    FlushInstructionCache(GetCurrentProcess(), t, 16);
     oC9 = (C9)t;
     VirtualProtect(p, 5, PAGE_EXECUTE_READWRITE, &old);
     p[0] = 0xE9; *(int*)(p + 1) = (int)((u32)hC9 - ((u32)p + 5));
@@ -359,7 +362,7 @@ BOOL WINAPI DllMain(HINSTANCE inst, DWORD reason, LPVOID res) {
         DeleteFileA(g_logp);
         if (!GetPrivateProfileIntA("Settings", "Enable", 1, g_ini)) { lg("SW2HD desactive (SW2HD.ini)\r\n"); flushlog(); return 1; }
         catalogue();
-        lg("SW2HD 2.0.3 : "); lgn((u32)g_nhd); lg(" images HD dans "); lg(g_dir);
+        lg("SW2HD 1.0.1 : "); lgn((u32)g_nhd); lg(" images HD dans "); lg(g_dir);
         lg(g_vram ? " | memoire video" : " | memoire du jeu"); lg(g_mips ? " | mipmaps\r\n" : "\r\n");
         if (!g_nhd) { lg("aucune image : module inactif\r\n"); flushlog(); return 1; }
         if (accrocher_c9(GetModuleHandleA("d3d9.dll"))) lg("accroche : Direct3DCreate9\r\n");
